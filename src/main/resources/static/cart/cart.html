@@ -1,0 +1,41 @@
+<h3>Корзина</h3>
+<table ng-show="Cart.items.length > 0" class="table table-hover" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <td>Название</td>
+        <td>Количество</td>
+        <td>Цена за единицу</td>
+        <td>Цена</td>
+        <td></td>
+        <td>
+        <button ng-show="Cart.items.length > 0"  class="btn btn-danger" ng-click="clearCart()">Очистить корзину</button>
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in Cart.items">
+        <td>{{item.productTitle}}</td>
+        <td>
+            <button type="button" class="btn btn-outline-danger" ng-click= "plusTo(item.pricePerProduct-10000)">-</button>
+            {{item.quantity}}
+            <button type="button" class="btn btn-outline-success" ng-click="plusTo(item.pricePerProduct+10000)">+</button>
+        </td>
+        <td>{{item.pricePerProduct}}</td>
+        <td>{{item.price}}</td>
+        <td>
+            <button type="button" class="close" ng-click="plusTo(item.pricePerProduct-20000)" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>Итого</td>
+        <td></td>
+        <td></td>
+        <td>{{Cart.totalPrice}}</td>
+    </tr>
+    </tbody>
+</table>
+<span ng-show="Cart.items.length == 0">Ваша корзина пуста</span>
+<!--<button ng-show="Cart.items.length > 0" class="btn btn-primary" ng-click="goToOrderSubmit()">Перейти к оформлению заказа</button>--><!--
+<button ng-show="Cart.items.length > 0"  class="btn btn-danger" ng-click="clearCart()">Очистить корзину</button>-->
